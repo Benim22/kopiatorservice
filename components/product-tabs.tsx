@@ -209,22 +209,22 @@ export function ProductTabs({ products }: ProductTabsProps) {
       )}
 
       <Tabs defaultValue="toppmodeller" className="w-full">
-        <TabsList className="w-full h-auto grid grid-cols-3 gap-2 rounded-lg bg-gray-100/80 p-1">
+        <TabsList className="w-full h-auto flex flex-col sm:grid sm:grid-cols-3 gap-1 sm:gap-2 rounded-lg bg-gray-100/80 p-1">
           <TabsTrigger 
             value="toppmodeller"
-            className="rounded-md py-2.5 px-4 text-base font-medium ring-offset-white transition-all data-[state=active]:bg-[#003366] data-[state=active]:text-white data-[state=active]:shadow-sm hover:bg-gray-200 data-[state=active]:hover:bg-[#002244]"
+            className="w-full rounded-md py-3 px-4 text-sm sm:text-base font-medium ring-offset-white transition-all data-[state=active]:bg-[#003366] data-[state=active]:text-white data-[state=active]:shadow-sm hover:bg-gray-200 data-[state=active]:hover:bg-[#002244]"
           >
             Toppmodeller
           </TabsTrigger>
           <TabsTrigger 
             value="mellanmodeller"
-            className="rounded-md py-2.5 px-4 text-base font-medium ring-offset-white transition-all data-[state=active]:bg-[#003366] data-[state=active]:text-white data-[state=active]:shadow-sm hover:bg-gray-200 data-[state=active]:hover:bg-[#002244]"
+            className="w-full rounded-md py-3 px-4 text-sm sm:text-base font-medium ring-offset-white transition-all data-[state=active]:bg-[#003366] data-[state=active]:text-white data-[state=active]:shadow-sm hover:bg-gray-200 data-[state=active]:hover:bg-[#002244]"
           >
             Mellanmodeller
           </TabsTrigger>
           <TabsTrigger 
             value="instegsmodeller"
-            className="rounded-md py-2.5 px-4 text-base font-medium ring-offset-white transition-all data-[state=active]:bg-[#003366] data-[state=active]:text-white data-[state=active]:shadow-sm hover:bg-gray-200 data-[state=active]:hover:bg-[#002244]"
+            className="w-full rounded-md py-3 px-4 text-sm sm:text-base font-medium ring-offset-white transition-all data-[state=active]:bg-[#003366] data-[state=active]:text-white data-[state=active]:shadow-sm hover:bg-gray-200 data-[state=active]:hover:bg-[#002244]"
           >
             Instegsmodeller
           </TabsTrigger>

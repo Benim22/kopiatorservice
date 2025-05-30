@@ -416,92 +416,38 @@ export default function AdminDashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4 md:p-8">
-      <header className="mb-8 flex items-center justify-between rounded-md bg-white p-6 shadow">
-        <h1 className="text-3xl font-bold text-[#003366]">Admin Dashboard</h1>
-        <div>
-          <span className="mr-4 text-gray-600">Inloggad som: {user.email}</span>
-          <Button onClick={handleLogout} variant="outline">
+    <div className="min-h-screen bg-gray-50 p-2 sm:p-4 md:p-8">
+      {/* Mobile-optimized header */}
+      <header className="mb-4 sm:mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between rounded-lg bg-white p-4 sm:p-6 shadow-sm">
+        <div className="mb-3 sm:mb-0">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#003366]">Admin Dashboard</h1>
+          <p className="text-sm text-gray-600 mt-1">Hantera produkter och innehåll</p>
+        </div>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 w-full sm:w-auto">
+          <span className="text-xs sm:text-sm text-gray-600 truncate max-w-[200px]">
+            Inloggad som: {user.email}
+          </span>
+          <Button onClick={handleLogout} variant="outline" size="sm" className="w-full sm:w-auto">
             Logga ut
           </Button>
         </div>
       </header>
 
-      <section className="rounded-md bg-white p-6 shadow">
+      <section className="rounded-lg bg-white p-4 sm:p-6 shadow-sm">
         <div className="mb-6">
-          <h2 className="text-2xl font-semibold text-[#003366] mb-4">Produkthantering</h2>
-          
-          {/* Filtreringssektion */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-            <div>
-              <Input
-                placeholder="Sök produkt..."
-                value={filters.search}
-                onChange={(e) => handleFilterChange('search', e.target.value)}
-                className="w-full"
-              />
-            </div>
-            <Select
-              value={filters.category}
-              onValueChange={(value) => handleFilterChange('category', value)}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Välj kategori" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Alla kategorier</SelectItem>
-                {categoryOptions.map(option => (
-                  <SelectItem key={option.value} value={option.value}>
-                    {option.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-
-            <Select
-              value={filters.status}
-              onValueChange={(value) => handleFilterChange('status', value)}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Välj status" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Alla status</SelectItem>
-                {skickOptions.map(option => (
-                  <SelectItem key={option.value} value={option.value}>
-                    {option.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-
-            <Select
-              value={filters.modelCategory}
-              onValueChange={(value) => handleFilterChange('modelCategory', value)}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Välj modellkategori" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Alla modellkategorier</SelectItem>
-                {modelCategoryOptions.map(option => (
-                  <SelectItem key={option.value} value={option.value}>
-                    {option.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          {/* Lägg till produkt-knapp */}
-          <div className="flex justify-end mb-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#003366] mb-2 sm:mb-0">
+              Produkthantering
+            </h2>
             <Dialog open={isAddModalOpen} onOpenChange={setIsAddModalOpen}>
               <DialogTrigger asChild>
-                <Button className="bg-[#003366] hover:bg-[#002244]">
-                  <PlusCircle className="mr-2 h-5 w-5" /> Lägg till Ny Produkt
+                <Button className="bg-[#003366] hover:bg-[#002244] w-full sm:w-auto">
+                  <PlusCircle className="mr-2 h-4 w-4" /> 
+                  <span className="hidden xs:inline">Lägg till Ny Produkt</span>
+                  <span className="xs:hidden">Ny Produkt</span>
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[525px]">
+              <DialogContent className="w-[95vw] max-w-[525px] max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
                   <DialogTitle>Lägg till Ny Produkt</DialogTitle>
                   <DialogDescription>
@@ -509,14 +455,21 @@ export default function AdminDashboardPage() {
                   </DialogDescription>
                 </DialogHeader>
                 <form onSubmit={handleAddProduct} className="grid gap-4 py-4">
-                  <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="name" className="text-right">
+                  <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+                    <Label htmlFor="name" className="sm:text-right font-medium">
                       Namn*
                     </Label>
-                    <Input id="name" name="name" value={addFormData.name} onChange={(e) => handleInputChange(e)} className="col-span-3" placeholder="Produktnamn" />
+                    <Input 
+                      id="name" 
+                      name="name" 
+                      value={addFormData.name} 
+                      onChange={(e) => handleInputChange(e)} 
+                      className="sm:col-span-3" 
+                      placeholder="Produktnamn" 
+                    />
                   </div>
-                  <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="category" className="text-right">
+                  <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+                    <Label htmlFor="category" className="sm:text-right font-medium">
                       Kategori*
                     </Label>
                     <Select
@@ -524,7 +477,7 @@ export default function AdminDashboardPage() {
                       onValueChange={(value) => handleCategoryChange(value)}
                       name="category"
                     >
-                      <SelectTrigger className="col-span-3">
+                      <SelectTrigger className="sm:col-span-3">
                         <SelectValue placeholder="Välj en kategori" />
                       </SelectTrigger>
                       <SelectContent>
@@ -536,8 +489,8 @@ export default function AdminDashboardPage() {
                       </SelectContent>
                     </Select>
                   </div>
-                  <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="model_category" className="text-right">
+                  <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+                    <Label htmlFor="model_category" className="sm:text-right font-medium">
                       Modellkategori
                     </Label>
                     <Select
@@ -545,7 +498,7 @@ export default function AdminDashboardPage() {
                       onValueChange={(value) => handleModelCategoryChange(value)}
                       name="model_category"
                     >
-                      <SelectTrigger className="col-span-3">
+                      <SelectTrigger className="sm:col-span-3">
                         <SelectValue placeholder="Välj en modellkategori" />
                       </SelectTrigger>
                       <SelectContent>
@@ -557,14 +510,21 @@ export default function AdminDashboardPage() {
                       </SelectContent>
                     </Select>
                   </div>
-                  <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="description" className="text-right">
+                  <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+                    <Label htmlFor="description" className="sm:text-right font-medium">
                       Beskrivning
                     </Label>
-                    <Textarea id="description" name="description" value={addFormData.description || ''} onChange={(e) => handleInputChange(e)} className="col-span-3" placeholder="Produktbeskrivning" />
+                    <Textarea 
+                      id="description" 
+                      name="description" 
+                      value={addFormData.description || ''} 
+                      onChange={(e) => handleInputChange(e)} 
+                      className="sm:col-span-3 min-h-[80px]" 
+                      placeholder="Produktbeskrivning" 
+                    />
                   </div>
-                  <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="features" className="text-right">
+                  <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+                    <Label htmlFor="features" className="sm:text-right font-medium">
                       Funktioner
                     </Label>
                     <Input 
@@ -572,24 +532,39 @@ export default function AdminDashboardPage() {
                       name="features"
                       value={featuresInput} 
                       onChange={(e) => handleFeaturesChange(e)} 
-                      className="col-span-3" 
+                      className="sm:col-span-3" 
                       placeholder="Komma-separerad, t.ex. Färg, Dubbelsidig"
                     />
                   </div>
-                  <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="price" className="text-right">
+                  <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+                    <Label htmlFor="price" className="sm:text-right font-medium">
                       Pris (kr)
                     </Label>
-                    <Input id="price" name="price" type="number" value={addFormData.price === null ? '' : addFormData.price} onChange={(e) => handleInputChange(e)} className="col-span-3" placeholder="T.ex. 10000" />
+                    <Input 
+                      id="price" 
+                      name="price" 
+                      type="number" 
+                      value={addFormData.price === null ? '' : addFormData.price} 
+                      onChange={(e) => handleInputChange(e)} 
+                      className="sm:col-span-3" 
+                      placeholder="T.ex. 10000" 
+                    />
                   </div>
-                  <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="image_url" className="text-right">
+                  <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+                    <Label htmlFor="image_url" className="sm:text-right font-medium">
                       Bild-URL
                     </Label>
-                    <Input id="image_url" name="image_url" value={addFormData.image_url || ''} onChange={(e) => handleInputChange(e)} className="col-span-3" placeholder="https://exempel.com/bild.jpg" />
+                    <Input 
+                      id="image_url" 
+                      name="image_url" 
+                      value={addFormData.image_url || ''} 
+                      onChange={(e) => handleInputChange(e)} 
+                      className="sm:col-span-3" 
+                      placeholder="https://exempel.com/bild.jpg" 
+                    />
                   </div>
-                  <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="status" className="text-right">
+                  <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+                    <Label htmlFor="status" className="sm:text-right font-medium">
                       Skick
                     </Label>
                     <Select
@@ -597,7 +572,7 @@ export default function AdminDashboardPage() {
                       onValueChange={(value) => handleInputChange({ target: { name: 'status', value } })}
                       name="status"
                     >
-                      <SelectTrigger className="col-span-3">
+                      <SelectTrigger className="sm:col-span-3">
                         <SelectValue placeholder="Välj skick" />
                       </SelectTrigger>
                       <SelectContent>
@@ -609,8 +584,8 @@ export default function AdminDashboardPage() {
                       </SelectContent>
                     </Select>
                   </div>
-                  <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="product_category" className="text-right">
+                  <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+                    <Label htmlFor="product_category" className="sm:text-right font-medium">
                       Produktkategori
                     </Label>
                     <Input 
@@ -618,59 +593,155 @@ export default function AdminDashboardPage() {
                       name="product_category" 
                       value={addFormData.product_category || ''} 
                       onChange={(e) => handleProductCategoryChange(e.target.value)} 
-                      className="col-span-3" 
+                      className="sm:col-span-3" 
                       placeholder="T.ex. Färgkopiator" 
                     />
                   </div>
-                  {formError && <p className="col-span-4 text-sm text-red-600 text-center">{formError}</p>}
-                  <DialogFooter>
+                  {formError && <p className="text-sm text-red-600 text-center bg-red-50 p-2 rounded">{formError}</p>}
+                  <DialogFooter className="flex flex-col sm:flex-row gap-2 sm:gap-0">
                     <DialogClose asChild>
-                      <Button type="button" variant="outline">Avbryt</Button>
+                      <Button type="button" variant="outline" className="w-full sm:w-auto">Avbryt</Button>
                     </DialogClose>
-                    <Button type="submit" className="bg-[#003366] hover:bg-[#002244]">Spara Produkt</Button>
+                    <Button type="submit" className="bg-[#003366] hover:bg-[#002244] w-full sm:w-auto">Lägg till Produkt</Button>
                   </DialogFooter>
                 </form>
               </DialogContent>
             </Dialog>
           </div>
+          
+          {/* Mobile-optimized filters */}
+          <div className="space-y-3 sm:space-y-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-4 mb-6">
+            <div>
+              <Label className="text-sm font-medium text-gray-700 mb-1 block">Sök</Label>
+              <Input
+                placeholder="Sök produkt..."
+                value={filters.search}
+                onChange={(e) => handleFilterChange('search', e.target.value)}
+                className="w-full"
+              />
+            </div>
+            <div>
+              <Label className="text-sm font-medium text-gray-700 mb-1 block">Kategori</Label>
+              <Select
+                value={filters.category}
+                onValueChange={(value) => handleFilterChange('category', value)}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Välj kategori" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Alla kategorier</SelectItem>
+                  {categoryOptions.map(option => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div>
+              <Label className="text-sm font-medium text-gray-700 mb-1 block">Status</Label>
+              <Select
+                value={filters.status}
+                onValueChange={(value) => handleFilterChange('status', value)}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Välj status" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Alla status</SelectItem>
+                  {skickOptions.map(option => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div>
+              <Label className="text-sm font-medium text-gray-700 mb-1 block">Modellkategori</Label>
+              <Select
+                value={filters.modelCategory}
+                onValueChange={(value) => handleFilterChange('modelCategory', value)}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Välj modellkategori" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Alla modellkategorier</SelectItem>
+                  {modelCategoryOptions.map(option => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
         </div>
 
+        {/* Products display - Cards for mobile, table for desktop */}
         {filteredProducts.length === 0 ? (
-          <p className="text-gray-500 text-center py-4">
-            {products.length === 0 ? "Inga produkter hittades. Lägg till din första produkt!" : "Inga produkter matchar dina filter."}
-          </p>
+          <div className="text-center py-12">
+            <div className="mx-auto h-12 w-12 text-gray-400 mb-4">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2 2v-5m16 0h-2M4 13h2m13-8V4a1 1 0 00-1-1H6a1 1 0 00-1 1v1m16 0V4a1 1 0 00-1-1H6a1 1 0 00-1 1v1" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">Inga produkter hittades</h3>
+            <p className="text-gray-500 mb-4">
+              {products.length === 0 ? "Lägg till din första produkt för att komma igång!" : "Inga produkter matchar dina filter."}
+            </p>
+            {products.length === 0 && (
+              <Button 
+                onClick={() => setIsAddModalOpen(true)}
+                className="bg-[#003366] hover:bg-[#002244]"
+              >
+                <PlusCircle className="mr-2 h-4 w-4" />
+                Lägg till första produkten
+              </Button>
+            )}
+          </div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Namn</th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Kategori</th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Modellkategori</th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Pris</th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Status</th>
-                  <th scope="col" className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-500">Åtgärder</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200 bg-white">
-                {filteredProducts.map((product) => (
-                  <tr key={product.id}>
-                    <td className="whitespace-nowrap px-6 py-4">
-                      <div className="text-sm font-medium text-gray-900">{product.name}</div>
-                      {product.image_url && <img src={product.image_url} alt={product.name} className="h-10 w-10 rounded-md object-cover mt-1"/>}
-                    </td>
-                    <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{product.category || '-'}</td>
-                    <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{product.model_category || '-'}</td>
-                    <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{product.price ? `${product.price} kr` : '-'}</td>
-                    <td className="whitespace-nowrap px-6 py-4">
-                      <span 
-                        className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5 
-                                  ${product.status === 'Ny' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}
-                      >
-                        {product.status || 'Okänd'}
-                      </span>
-                    </td>
-                    <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+          <>
+            {/* Mobile card view */}
+            <div className="block lg:hidden space-y-4">
+              {filteredProducts.map((product) => (
+                <div key={product.id} className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-sm font-medium text-gray-900 truncate">{product.name}</h3>
+                      <p className="text-xs text-gray-500 mt-1">{product.category || 'Ingen kategori'}</p>
+                    </div>
+                    {product.image_url && (
+                      <img 
+                        src={product.image_url} 
+                        alt={product.name} 
+                        className="h-12 w-12 rounded-md object-cover ml-3 flex-shrink-0"
+                      />
+                    )}
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-3 mb-4 text-xs">
+                    <div>
+                      <span className="text-gray-500">Modellkategori:</span>
+                      <p className="font-medium">{product.model_category || '-'}</p>
+                    </div>
+                    <div>
+                      <span className="text-gray-500">Pris:</span>
+                      <p className="font-medium">{product.price ? `${product.price} kr` : '-'}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center justify-between">
+                    <span 
+                      className={`inline-flex rounded-full px-2 py-1 text-xs font-semibold 
+                                ${product.status === 'Ny' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}
+                    >
+                      {product.status || 'Okänd'}
+                    </span>
+                    
+                    <div className="flex space-x-1">
                       <Button 
                         variant="ghost" 
                         size="sm" 
@@ -678,31 +749,97 @@ export default function AdminDashboardPage() {
                           setSelectedProduct(product);
                           setIsCopyModalOpen(true);
                         }} 
-                        className="text-[#003366] hover:text-[#002244] mr-2"
+                        className="text-[#003366] hover:text-[#002244] p-2"
                       >
-                        <Copy className="h-4 w-4 mr-1"/> Kopiera
+                        <Copy className="h-4 w-4"/>
                       </Button>
                       <Button 
                         variant="ghost" 
                         size="sm" 
                         onClick={() => handleEditProduct(product)} 
-                        className="text-[#003366] hover:text-[#002244] mr-2"
+                        className="text-[#003366] hover:text-[#002244] p-2"
                       >
-                        <Edit className="h-4 w-4 mr-1"/> Redigera
+                        <Edit className="h-4 w-4"/>
                       </Button>
                       <Button 
                         variant="destructive" 
                         size="sm" 
                         onClick={() => handleDeleteProduct(product)}
+                        className="p-2"
                       >
-                        <Trash2 className="h-4 w-4 mr-1"/> Ta bort
+                        <Trash2 className="h-4 w-4"/>
                       </Button>
-                    </td>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop table view */}
+            <div className="hidden lg:block overflow-x-auto">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Namn</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Kategori</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Modellkategori</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Pris</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Status</th>
+                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-500">Åtgärder</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody className="divide-y divide-gray-200 bg-white">
+                  {filteredProducts.map((product) => (
+                    <tr key={product.id}>
+                      <td className="whitespace-nowrap px-6 py-4">
+                        <div className="text-sm font-medium text-gray-900">{product.name}</div>
+                        {product.image_url && <img src={product.image_url} alt={product.name} className="h-10 w-10 rounded-md object-cover mt-1"/>}
+                      </td>
+                      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{product.category || '-'}</td>
+                      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{product.model_category || '-'}</td>
+                      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{product.price ? `${product.price} kr` : '-'}</td>
+                      <td className="whitespace-nowrap px-6 py-4">
+                        <span 
+                          className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5 
+                                    ${product.status === 'Ny' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}
+                        >
+                          {product.status || 'Okänd'}
+                        </span>
+                      </td>
+                      <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+                        <Button 
+                          variant="ghost" 
+                          size="sm" 
+                          onClick={() => {
+                            setSelectedProduct(product);
+                            setIsCopyModalOpen(true);
+                          }} 
+                          className="text-[#003366] hover:text-[#002244] mr-2"
+                        >
+                          <Copy className="h-4 w-4 mr-1"/> Kopiera
+                        </Button>
+                        <Button 
+                          variant="ghost" 
+                          size="sm" 
+                          onClick={() => handleEditProduct(product)} 
+                          className="text-[#003366] hover:text-[#002244] mr-2"
+                        >
+                          <Edit className="h-4 w-4 mr-1"/> Redigera
+                        </Button>
+                        <Button 
+                          variant="destructive" 
+                          size="sm" 
+                          onClick={() => handleDeleteProduct(product)}
+                        >
+                          <Trash2 className="h-4 w-4 mr-1"/> Ta bort
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
         )}
       </section>
 
@@ -725,7 +862,7 @@ export default function AdminDashboardPage() {
 
       {/* Add Edit Product Dialog */}
       <Dialog open={isEditModalOpen} onOpenChange={setIsEditModalOpen}>
-        <DialogContent className="sm:max-w-[525px]">
+        <DialogContent className="w-[95vw] max-w-[525px] max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Redigera Produkt</DialogTitle>
             <DialogDescription>
@@ -733,8 +870,8 @@ export default function AdminDashboardPage() {
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={handleUpdateProduct} className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="edit-name" className="text-right">
+            <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+              <Label htmlFor="edit-name" className="sm:text-right font-medium">
                 Namn*
               </Label>
               <Input 
@@ -742,12 +879,12 @@ export default function AdminDashboardPage() {
                 name="name" 
                 value={editFormData.name} 
                 onChange={(e) => handleInputChange(e, true)} 
-                className="col-span-3" 
+                className="sm:col-span-3" 
                 placeholder="Produktnamn" 
               />
             </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="edit-category" className="text-right">
+            <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+              <Label htmlFor="edit-category" className="sm:text-right font-medium">
                 Kategori*
               </Label>
               <Select
@@ -755,7 +892,7 @@ export default function AdminDashboardPage() {
                 onValueChange={(value) => handleCategoryChange(value, true)}
                 name="category"
               >
-                <SelectTrigger className="col-span-3">
+                <SelectTrigger className="sm:col-span-3">
                   <SelectValue placeholder="Välj en kategori" />
                 </SelectTrigger>
                 <SelectContent>
@@ -767,8 +904,8 @@ export default function AdminDashboardPage() {
                 </SelectContent>
               </Select>
             </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="edit-model_category" className="text-right">
+            <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+              <Label htmlFor="edit-model_category" className="sm:text-right font-medium">
                 Modellkategori
               </Label>
               <Select
@@ -776,7 +913,7 @@ export default function AdminDashboardPage() {
                 onValueChange={(value) => handleModelCategoryChange(value, true)}
                 name="model_category"
               >
-                <SelectTrigger className="col-span-3">
+                <SelectTrigger className="sm:col-span-3">
                   <SelectValue placeholder="Välj en modellkategori" />
                 </SelectTrigger>
                 <SelectContent>
@@ -788,8 +925,8 @@ export default function AdminDashboardPage() {
                 </SelectContent>
               </Select>
             </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="edit-description" className="text-right">
+            <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+              <Label htmlFor="edit-description" className="sm:text-right font-medium">
                 Beskrivning
               </Label>
               <Textarea 
@@ -797,12 +934,12 @@ export default function AdminDashboardPage() {
                 name="description" 
                 value={editFormData.description || ''} 
                 onChange={(e) => handleInputChange(e, true)} 
-                className="col-span-3" 
+                className="sm:col-span-3 min-h-[80px]" 
                 placeholder="Produktbeskrivning" 
               />
             </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="edit-features" className="text-right">
+            <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+              <Label htmlFor="edit-features" className="sm:text-right font-medium">
                 Funktioner
               </Label>
               <Input 
@@ -810,12 +947,12 @@ export default function AdminDashboardPage() {
                 name="features"
                 value={editFeaturesInput} 
                 onChange={(e) => handleFeaturesChange(e, true)} 
-                className="col-span-3" 
+                className="sm:col-span-3" 
                 placeholder="Komma-separerad, t.ex. Färg, Dubbelsidig"
               />
             </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="edit-price" className="text-right">
+            <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+              <Label htmlFor="edit-price" className="sm:text-right font-medium">
                 Pris (kr)
               </Label>
               <Input 
@@ -824,12 +961,12 @@ export default function AdminDashboardPage() {
                 type="number" 
                 value={editFormData.price === null ? '' : editFormData.price} 
                 onChange={(e) => handleInputChange(e, true)} 
-                className="col-span-3" 
+                className="sm:col-span-3" 
                 placeholder="T.ex. 10000" 
               />
             </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="edit-image_url" className="text-right">
+            <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+              <Label htmlFor="edit-image_url" className="sm:text-right font-medium">
                 Bild-URL
               </Label>
               <Input 
@@ -837,12 +974,12 @@ export default function AdminDashboardPage() {
                 name="image_url" 
                 value={editFormData.image_url || ''} 
                 onChange={(e) => handleInputChange(e, true)} 
-                className="col-span-3" 
+                className="sm:col-span-3" 
                 placeholder="https://exempel.com/bild.jpg" 
               />
             </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="edit-status" className="text-right">
+            <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+              <Label htmlFor="edit-status" className="sm:text-right font-medium">
                 Skick
               </Label>
               <Select
@@ -850,7 +987,7 @@ export default function AdminDashboardPage() {
                 onValueChange={(value) => handleInputChange({ target: { name: 'status', value } }, true)}
                 name="status"
               >
-                <SelectTrigger className="col-span-3">
+                <SelectTrigger className="sm:col-span-3">
                   <SelectValue placeholder="Välj skick" />
                 </SelectTrigger>
                 <SelectContent>
@@ -862,8 +999,8 @@ export default function AdminDashboardPage() {
                 </SelectContent>
               </Select>
             </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="edit-product_category" className="text-right">
+            <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+              <Label htmlFor="edit-product_category" className="sm:text-right font-medium">
                 Produktkategori
               </Label>
               <Input 
@@ -871,16 +1008,16 @@ export default function AdminDashboardPage() {
                 name="product_category" 
                 value={editFormData.product_category || ''} 
                 onChange={(e) => handleProductCategoryChange(e.target.value)} 
-                className="col-span-3" 
+                className="sm:col-span-3" 
                 placeholder="T.ex. Färgkopiator" 
               />
             </div>
-            {formError && <p className="col-span-4 text-sm text-red-600 text-center">{formError}</p>}
-            <DialogFooter>
+            {formError && <p className="text-sm text-red-600 text-center bg-red-50 p-2 rounded">{formError}</p>}
+            <DialogFooter className="flex flex-col sm:flex-row gap-2 sm:gap-0">
               <DialogClose asChild>
-                <Button type="button" variant="outline">Avbryt</Button>
+                <Button type="button" variant="outline" className="w-full sm:w-auto">Avbryt</Button>
               </DialogClose>
-              <Button type="submit" className="bg-[#003366] hover:bg-[#002244]">Spara Ändringar</Button>
+              <Button type="submit" className="bg-[#003366] hover:bg-[#002244] w-full sm:w-auto">Spara Ändringar</Button>
             </DialogFooter>
           </form>
         </DialogContent>
@@ -888,7 +1025,7 @@ export default function AdminDashboardPage() {
 
       {/* Lägg till Dialog för kopiering */}
       <Dialog open={isCopyModalOpen} onOpenChange={setIsCopyModalOpen}>
-        <DialogContent className="sm:max-w-[525px]">
+        <DialogContent className="w-[95vw] max-w-[525px] max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Kopiera Produkt till Ny Kategori</DialogTitle>
             <DialogDescription>
@@ -896,8 +1033,8 @@ export default function AdminDashboardPage() {
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={handleCopyProduct} className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="copy-category" className="text-right">
+            <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+              <Label htmlFor="copy-category" className="sm:text-right font-medium">
                 Kategori*
               </Label>
               <Select
@@ -905,7 +1042,7 @@ export default function AdminDashboardPage() {
                 onValueChange={(value) => setCopyFormData(prev => ({ ...prev, category: value }))}
                 name="category"
               >
-                <SelectTrigger className="col-span-3">
+                <SelectTrigger className="sm:col-span-3">
                   <SelectValue placeholder="Välj en kategori" />
                 </SelectTrigger>
                 <SelectContent>
@@ -917,8 +1054,8 @@ export default function AdminDashboardPage() {
                 </SelectContent>
               </Select>
             </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="copy-model_category" className="text-right">
+            <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+              <Label htmlFor="copy-model_category" className="sm:text-right font-medium">
                 Modellkategori
               </Label>
               <Select
@@ -926,7 +1063,7 @@ export default function AdminDashboardPage() {
                 onValueChange={(value) => setCopyFormData(prev => ({ ...prev, model_category: value as "Toppmodell" | "Mellanmodell" | "Instegsmodell" | null }))}
                 name="model_category"
               >
-                <SelectTrigger className="col-span-3">
+                <SelectTrigger className="sm:col-span-3">
                   <SelectValue placeholder="Välj en modellkategori" />
                 </SelectTrigger>
                 <SelectContent>
@@ -938,8 +1075,8 @@ export default function AdminDashboardPage() {
                 </SelectContent>
               </Select>
             </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="copy-product_category" className="text-right">
+            <div className="grid grid-cols-1 sm:grid-cols-4 items-start sm:items-center gap-2 sm:gap-4">
+              <Label htmlFor="copy-product_category" className="sm:text-right font-medium">
                 Produktkategori
               </Label>
               <Input 
@@ -947,16 +1084,16 @@ export default function AdminDashboardPage() {
                 name="product_category" 
                 value={copyFormData.product_category || ''} 
                 onChange={(e) => setCopyFormData(prev => ({ ...prev, product_category: e.target.value }))} 
-                className="col-span-3" 
+                className="sm:col-span-3" 
                 placeholder="T.ex. Färgkopiator" 
               />
             </div>
-            {formError && <p className="text-sm text-red-600 text-center">{formError}</p>}
-            <DialogFooter>
-              <Button type="button" variant="outline" onClick={() => setIsCopyModalOpen(false)}>
+            {formError && <p className="text-sm text-red-600 text-center bg-red-50 p-2 rounded">{formError}</p>}
+            <DialogFooter className="flex flex-col sm:flex-row gap-2 sm:gap-0">
+              <Button type="button" variant="outline" onClick={() => setIsCopyModalOpen(false)} className="w-full sm:w-auto">
                 Avbryt
               </Button>
-              <Button type="submit" className="bg-[#003366] hover:bg-[#002244]">
+              <Button type="submit" className="bg-[#003366] hover:bg-[#002244] w-full sm:w-auto">
                 Kopiera Produkt
               </Button>
             </DialogFooter>
