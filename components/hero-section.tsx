@@ -32,13 +32,13 @@ export function HeroSection() {
       </div>
 
       <div className="container mx-auto px-4 z-10 py-12 sm:py-16 md:py-20">
-        <div className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-3xl text-center sm:text-left">
+        <div className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-3xl mx-auto sm:mx-0 text-center sm:text-left">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight tracking-tight">
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight tracking-tight text-center sm:text-left">
               Professionella lösningar för kopiatorer och skrivare
             </h1>
           </motion.div>
@@ -48,7 +48,7 @@ export function HeroSection() {
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <p className="text-md xs:text-lg sm:text-xl md:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8 leading-relaxed max-w-xl mx-auto sm:mx-0">
+            <p className="text-md xs:text-lg sm:text-xl md:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8 leading-relaxed max-w-xl mx-auto sm:mx-0 text-center sm:text-left">
               Vi erbjuder försäljning, uthyrning och service av kopiatorer och skrivare för företag i alla storlekar.
             </p>
           </motion.div>
@@ -57,16 +57,16 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col xs:flex-row gap-3 sm:gap-4 justify-center sm:justify-start"
+            className="flex flex-col xs:flex-row gap-3 sm:gap-4 justify-center sm:justify-start items-center"
           >
-            <Button asChild size="lg" className="bg-white text-[#003366] hover:bg-gray-100 shadow-md hover:shadow-lg transition-all duration-300 text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-3 font-semibold rounded-lg">
+            <Button asChild size="lg" className="bg-white text-[#003366] hover:bg-gray-100 shadow-md hover:shadow-lg transition-all duration-300 text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-3 font-semibold rounded-lg w-full xs:w-auto">
               <Link href="#contact">Kontakta oss</Link>
             </Button>
             <Button
               asChild
               size="lg"
               variant="outline"
-              className="bg-transparent text-white border-white border-2 hover:bg-white hover:text-[#003366] shadow-md hover:shadow-lg transition-all duration-300 text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-3 font-semibold rounded-lg"
+              className="bg-transparent text-white border-white border-2 hover:bg-white hover:text-[#003366] shadow-md hover:shadow-lg transition-all duration-300 text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-3 font-semibold rounded-lg w-full xs:w-auto"
             >
               <Link href="#products">Utforska produkter</Link>
             </Button>
