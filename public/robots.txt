@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Tillåt alla sökmotorer att indexera hemsidan
+# Hänvisa till sitemap
+Sitemap: https://kopiatorservice.se/sitemap.xml
+
+# Undantag för privata/admin-sidor
+Disallow: /admin/
+Disallow: /api/
+Disallow: /cookies/
+Disallow: /villkor/
+Disallow: /integritetspolicy/
+
+# Optimerad crawling
+Crawl-delay: 1 

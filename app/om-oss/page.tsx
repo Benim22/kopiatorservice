@@ -2,6 +2,35 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ChevronRight, Users, Award, Clock, Briefcase } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Om Oss - Kopiator Service AB | 30+ År av Expertis inom Kopiatorer",
+  description:
+    "Lär känna Kopiator Service AB - din pålitliga partner för kopiatorer och skrivare sedan 1993. Med över 30 års erfarenhet, 1000+ nöjda kunder och expertis inom multifunktionsmaskiner i Göteborg och Västra Götaland.",
+  keywords: [
+    "kopiator service historia",
+    "företag kopiatorer göteborg",
+    "experter kontorsmaskiner",
+    "30 års erfarenhet",
+    "pålitlig partner",
+    "kopiator service ab partille",
+    "multifunktionssystem",
+    "nätverksklara maskiner",
+    "dokumenthantering expertis",
+    "service och reparation"
+  ],
+  openGraph: {
+    title: "Om Kopiator Service AB - 30+ års expertis inom kopiatorer",
+    description:
+      "Sedan 1993 har vi levererat högkvalitativa kopiatorer och skrivare till företag. Med 1000+ nöjda kunder och djup expertis är vi din pålitliga partner.",
+    url: "https://kopiatorservice.se/om-oss",
+    type: "website",
+  },
+  alternates: {
+    canonical: "https://kopiatorservice.se/om-oss",
+  },
+}
 
 export default function AboutPage() {
   return (
@@ -20,7 +49,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 z-10">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Om Oss</h1>
           <p className="text-xl text-white/90 max-w-2xl">
-            Lär känna Kopiator Service AB - din pålitliga partner för kopiatorer och skrivare sedan 1995.
+            Lär känna Kopiator Service AB - din pålitliga partner för kopiatorer och skrivare sedan 1993.
           </p>
         </div>
       </section>

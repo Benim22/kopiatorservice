@@ -2,6 +2,36 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ChevronRight, Settings, ShoppingCart, CreditCard } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Tjänster - Service, Försäljning & Uthyrning av Kopiatorer | Kopiator Service AB",
+  description:
+    "Omfattande tjänster för kopiatorer och skrivare: professionell service & underhåll, försäljning & uthyrning av nya/begagnade maskiner, samt flexibla finansieringsalternativ. Snabb responstid i Göteborg.",
+  keywords: [
+    "service kopiatorer",
+    "underhåll skrivare", 
+    "försäljning kopiatorer",
+    "uthyrning kontorsmaskiner",
+    "finansiering kopiatorer",
+    "reparation skrivare",
+    "certifierade tekniker",
+    "service kontrakt",
+    "multifunktionsmaskin service",
+    "skräddarsydda lösningar",
+    "snabb service göteborg"
+  ],
+  openGraph: {
+    title: "Tjänster för kopiatorer - Service, försäljning & uthyrning",
+    description:
+      "Vi erbjuder professionell service, försäljning och uthyrning av kopiatorer med snabb responstid och expertkunnighet.",
+    url: "https://kopiatorservice.se/tjanster",
+    type: "website",
+  },
+  alternates: {
+    canonical: "https://kopiatorservice.se/tjanster",
+  },
+}
 
 export default function TjansterPage() {
   return (

@@ -1,6 +1,35 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Phone, Mail, MapPin } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Kontakt - Kopiator Service AB Partille | Tel: 031-19 55 00",
+  description:
+    "Kontakta Kopiator Service AB för hjälp med kopiatorer och skrivare. Besök oss på Gamla Alingsåsvägen 24, Partille eller ring 031-19 55 00. Öppet mån-fre 08:00-17:00. Snabb support och experthjälp.",
+  keywords: [
+    "kontakt kopiator service",
+    "telefon 031-19 55 00",
+    "gamla alingsåsvägen 24 partille",
+    "info@kopiatorservice.se",
+    "kopiator service adress",
+    "öppettider kopiator service",
+    "kontakt kopiatorer göteborg",
+    "support skrivare",
+    "reparation kontakt",
+    "service kontakt partille"
+  ],
+  openGraph: {
+    title: "Kontakta Kopiator Service AB - Expert på kopiatorer i Partille",
+    description:
+      "Ring 031-19 55 00 eller besök oss på Gamla Alingsåsvägen 24, Partille. Vi hjälper dig med kopiatorer och skrivare mån-fre 08:00-17:00.",
+    url: "https://kopiatorservice.se/kontakt",
+    type: "website",
+  },
+  alternates: {
+    canonical: "https://kopiatorservice.se/kontakt",
+  },
+}
 
 export default function ContactPage() {
   return (

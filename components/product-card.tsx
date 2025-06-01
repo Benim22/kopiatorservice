@@ -50,13 +50,13 @@ export function ProductCard({
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="relative h-40 sm:h-48 lg:h-56 overflow-hidden">
+        <div className="relative h-48 sm:h-56 lg:h-64 overflow-hidden bg-white">
           <Image
             src={image || "/placeholder.svg"}
             alt={title}
             fill
-            className="object-cover transition-transform duration-500"
-            style={{ transform: isHovered ? "scale(1.05)" : "scale(1)" }}
+            className="object-contain transition-transform duration-500"
+            style={{ transform: isHovered ? "scale(1.02)" : "scale(1)" }}
           />
           <div className="absolute top-2 sm:top-4 right-2 sm:right-4">
             <Badge className={getSkickBadge(status)}>
@@ -67,7 +67,7 @@ export function ProductCard({
         <div className="p-3 sm:p-4 lg:p-6 flex-grow flex flex-col">
           {type && (
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs sm:text-sm font-medium text-[#003366]">{type} Kopiator</span>
+              <span className="text-xs sm:text-sm font-medium text-[#003366]">{type}</span>
             </div>
           )}
           <h3 className="text-sm sm:text-base lg:text-lg font-bold text-[#003366] mb-2 line-clamp-2">{title}</h3>

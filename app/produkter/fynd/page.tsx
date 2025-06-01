@@ -52,20 +52,17 @@ export default function FyndhornaPage() {
   return (
     <main className="flex min-h-screen flex-col">
       {/* Hero Section */}
-      <section className="relative h-[40vh] min-h-[300px] flex items-center">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/placeholder.svg?height=600&width=1920"
-            alt="Fyndhörnan"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-[#003366]/70"></div>
+      <section className="relative h-[40vh] min-h-[300px] flex items-center bg-gradient-to-br from-[#003366] via-[#004080] to-[#0066cc]">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-white/5 rounded-full blur-2xl"></div>
         </div>
         <div className="container mx-auto px-4 z-10">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Fyndhörnan</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Fyndhörna</h1>
           <p className="text-xl text-white/90 max-w-2xl">
-            Demonstrationsmodeller och utgående modeller med full garanti till oslagbara priser.
+            Extraordinära erbjudanden på kvalitativa kopiatorer och skrivare - begränsade antal, försäljning till slutet!
           </p>
         </div>
       </section>

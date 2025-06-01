@@ -7,6 +7,36 @@ import { ProductModal } from "@/components/product-modal"
 import { supabase } from "@/lib/supabase"
 import { ProductList } from "./product-list"
 import { ProductTabs } from "@/components/product-tabs"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Produkter - Kopiatorer & Skrivare | Nya & Begagnade | Kopiator Service AB",
+  description:
+    "Upptäck vårt breda sortiment av kopiatorer och skrivare: nya och begagnade A3/A4 färgmaskiner, multifunktionsmaskiner, toner och förbrukningsmaterial. Högkvalitativa produkter från ledande tillverkare.",
+  keywords: [
+    "kopiatorer produkter",
+    "skrivare sortiment",
+    "begagnade kopiatorer",
+    "nya kopiatorer", 
+    "A3 färgkopiatorer",
+    "A4 skrivare",
+    "multifunktionsmaskiner",
+    "toner och bläck",
+    "förbrukningsmaterial",
+    "fynd kopiatorer",
+    "kontorsmaskiner göteborg"
+  ],
+  openGraph: {
+    title: "Produkter - Stort utbud av kopiatorer och skrivare",
+    description:
+      "Se vårt kompletta sortiment av nya och begagnade kopiatorer, skrivare och multifunktionsmaskiner från ledande tillverkare.",
+    url: "https://kopiatorservice.se/produkter",
+    type: "website",
+  },
+  alternates: {
+    canonical: "https://kopiatorservice.se/produkter",
+  },
+}
 
 // Denna funktion körs på servern vid varje sidladdning
 async function getProducts() {

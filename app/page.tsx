@@ -9,24 +9,61 @@ import { TestimonialSlider } from "@/components/testimonial-slider"
 import { ContactCard } from "@/components/contact-card"
 import { supabase } from "@/lib/supabase"
 import type { Product } from "@/types/supabase"
+import type { Metadata } from "next"
 
-// Hämta de senaste produkterna för startsidan
-async function getLatestProducts(limit: number = 3) {
-  const { data: products, error } = await supabase
-    .from('products')
-    .select('*')
-    .order('created_at', { ascending: false })
-    .limit(limit)
+export const metadata: Metadata = {
+  title: "Hem - Kopiator Service AB | Kopiatorer & Skrivare Göteborg",
+  description:
+    "Välkommen till Kopiator Service AB - din pålitliga partner för kopiatorer och skrivare i Göteborg sedan 1993. Vi erbjuder försäljning, uthyrning, service och finansiering av både nya och begagnade kontorsmaskiner.",
+  keywords: [
+    "kopiator service göteborg",
+    "kopiatorer partille",
+    "skrivare göteborg", 
+    "kontorsmaskiner",
+    "begagnade kopiatorer",
+    "uthyrning kopiatorer",
+    "service kopiatorer",
+    "multifunktionsmaskiner",
+    "A3 kopiatorer",
+    "A4 skrivare",
+    "färgkopiatorer",
+    "dokumenthantering"
+  ],
+  openGraph: {
+    title: "Kopiator Service AB - Ledande inom kopiatorer i Göteborg",
+    description:
+      "30+ års erfarenhet av kopiatorer och skrivare. Professionell service, försäljning och uthyrning i Göteborg och Västra Götaland.",
+    url: "https://kopiatorservice.se",
+    type: "website",
+  },
+  alternates: {
+    canonical: "https://kopiatorservice.se",
+  },
+}
 
-  if (error) {
-    console.error('Error fetching latest products:', error)
-    return []
+// Hämta en produkt från varje kategori för startsidan
+async function getProductsFromEachCategory() {
+  const categories = ['Toppmodell', 'Mellanmodell', 'Instegsmodell']
+  const products = []
+
+  for (const category of categories) {
+    const { data: categoryProducts, error } = await supabase
+      .from('products')
+      .select('*')
+      .eq('model_category', category)
+      .order('created_at', { ascending: false })
+      .limit(1)
+
+    if (!error && categoryProducts && categoryProducts.length > 0) {
+      products.push(categoryProducts[0])
+    }
   }
+
   return products as Product[]
 }
 
 export default async function Home() {
-  const latestProducts = await getLatestProducts(3)
+  const latestProducts = await getProductsFromEachCategory()
 
   return (
     <main className="flex min-h-screen flex-col">
@@ -51,8 +88,8 @@ export default async function Home() {
                   title={product.name ?? 'Produktnamn saknas'}
                   description={product.description ?? 'Beskrivning saknas'}
                   image={product.image_url ?? "/placeholder.svg?height=300&width=400"}
-                  status={product.status ?? 'Okänd'}
-                  type={product.type ?? 'Okänd'}
+                  status={product.status ?? 'Ny'}
+                  type={product.model_category ?? undefined}
                   features={product.features ?? []}
                   price={product.price?.toString() ?? 'Pris saknas'} 
                   originalPrice={product.original_price?.toString()}

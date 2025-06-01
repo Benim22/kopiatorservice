@@ -8,6 +8,35 @@ import { ProductSidebar } from "@/components/product-sidebar"
 import { ProductModal } from "@/components/product-modal"
 import { useState, useEffect } from "react"
 import { supabase } from "@/lib/supabase"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Toner & Bläck - Förbrukningsmaterial för Kopiatorer & Skrivare | Kopiator Service AB",
+  description:
+    "Högkvalitativt förbrukningsmaterial för alla typer av skrivare och kopiatorer. Originaltoner, kompatibla patroner och bläck till alla märken. Snabb leverans och konkurrerande priser i Göteborg.",
+  keywords: [
+    "toner skrivare",
+    "bläckpatroner",
+    "förbrukningsmaterial",
+    "originaltoner",
+    "kompatibla patroner",
+    "toner kopiatorer",
+    "bläck skrivare",
+    "patroner göteborg",
+    "billig toner",
+    "toner leverans"
+  ],
+  openGraph: {
+    title: "Toner & Bläck - Förbrukningsmaterial för alla skrivare",
+    description:
+      "Köp toner och bläckpatroner till din skrivare eller kopiator. Originaltoner och kompatibla alternativ med snabb leverans.",
+    url: "https://kopiatorservice.se/produkter/toner",
+    type: "website",
+  },
+  alternates: {
+    canonical: "https://kopiatorservice.se/produkter/toner",
+  },
+}
 
 // Definiera Product interface
 interface Product {
