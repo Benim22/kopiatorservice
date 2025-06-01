@@ -1,14 +1,12 @@
-"use client"
-
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ChevronRight, Search, Filter, ShoppingCart, CheckCircle } from "lucide-react"
 import { ProductSidebar } from "@/components/product-sidebar"
 import { ProductModal } from "@/components/product-modal"
-import { useState, useEffect } from "react"
 import { supabase } from "@/lib/supabase"
 import type { Metadata } from "next"
+import { TonerProductList } from "./toner-product-list"
 
 export const metadata: Metadata = {
   title: "Toner & Bläck - Förbrukningsmaterial för Kopiatorer & Skrivare | Kopiator Service AB",
@@ -65,20 +63,8 @@ async function getProductsByCategory(categorySlug: string): Promise<Product[]> {
   return (data || []) as Product[];
 }
 
-export default function TonerOchBlackPage() {
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
-  const [products, setProducts] = useState<Product[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    async function fetchData() {
-      setIsLoading(true);
-      const fetchedProducts = await getProductsByCategory("toner"); // Använd korrekt slug
-      setProducts(fetchedProducts);
-      setIsLoading(false);
-    }
-    fetchData();
-  }, []);
+export default async function TonerOchBlackPage() {
+  const products = await getProductsByCategory("toner");
   
   return (
     <main className="flex min-h-screen flex-col">
@@ -138,71 +124,54 @@ export default function TonerOchBlackPage() {
 
             {/* Product Listing */}
             <div className="md:col-span-3">
-                <div className="mb-8">
-                    <h2 className="text-3xl font-bold text-[#003366] mb-4">Vårt sortiment av Toner & Bläck</h2>
-                    <p className="text-gray-600">Hitta toner, bläckpatroner och annat förbrukningsmaterial till din skrivare eller kopiator.</p>
-                </div>
+              <div className="mb-8">
+                <h2 className="text-3xl font-bold text-[#003366] mb-4">Vårt sortiment av Toner & Bläck</h2>
+                <p className="text-gray-600">Hitta toner, bläckpatroner och annat förbrukningsmaterial till din skrivare eller kopiator.</p>
+              </div>
 
-                {isLoading ? (
-                    <p>Laddar produkter...</p>
-                ) : products.length === 0 ? (
-                    <p>Inga produkter hittades i denna kategori.</p>
-                ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"> {/* Anpassat grid */}
-                    {products.map((product) => (
-                        <div key={product.id} className="bg-white rounded-lg overflow-hidden shadow-md border border-gray-100">
-                        <div className="relative h-64">
-                            <Image
-                            src={product.image_url || "/placeholder.svg?height=200&width=300"}
-                            alt={product.name || 'Produktbild'}
-                            fill
-                            className="object-contain p-4"
-                            />
-                        </div>
-                        <div className="p-6">
-                            <h3 className="text-xl font-bold text-[#003366] mb-2">{product.name}</h3>
-                            <p className="text-gray-600 mb-4 line-clamp-2">{product.description}</p>
-                            {product.features && product.features.length > 0 && (
-                            <div className="mb-4">
-                                {product.features.slice(0, 2).map((feature, index) => ( // Visar färre features om det är många
-                                <div key={index} className="flex items-center mb-1">
-                                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
-                                    <span className="text-sm text-gray-600">{feature}</span>
-                                </div>
-                                ))}
-                            </div>
-                            )}
-                            <div className="flex justify-between items-center">
-                            <div>
-                                <span className="text-lg font-bold text-[#003366] block">
-                                {product.price ? `${product.price.toLocaleString('sv-SE')} kr` : 'Pris på begäran'}
-                                </span>
-                            </div>
-                            <Button
-                                onClick={() => setSelectedProduct(product)}
-                                className="bg-[#003366] hover:bg-[#002244]"
-                            >
-                                Läs mer <ShoppingCart className="ml-2 h-4 w-4" />
-                            </Button>
-                            </div>
-                        </div>
-                        </div>
-                    ))}
-                    </div>
-                )}
+              <TonerProductList products={products} />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Product Modal */}
-      {selectedProduct && (
-        <ProductModal
-          isOpen={!!selectedProduct}
-          onClose={() => setSelectedProduct(null)}
-          product={selectedProduct}
-        />
-      )}
+      {/* Features Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-[#003366] mb-4">Varför välja oss för toner & bläck?</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Vi erbjuder både originaltoner och kompatibla alternativ med samma kvalitet men till bättre priser.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-[#003366] rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-[#003366] mb-2">Kvalitetsgaranti</h3>
+              <p className="text-gray-600">Alla våra produkter kommer med fullständig garanti och stöd.</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 bg-[#003366] rounded-full flex items-center justify-center mx-auto mb-4">
+                <ShoppingCart className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-[#003366] mb-2">Snabb leverans</h3>
+              <p className="text-gray-600">Beställ före 14:00 så skickar vi samma dag.</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 bg-[#003366] rounded-full flex items-center justify-center mx-auto mb-4">
+                <Search className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-[#003366] mb-2">Expert rådgivning</h3>
+              <p className="text-gray-600">Våra specialister hjälper dig hitta rätt produkter.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   )
 }
