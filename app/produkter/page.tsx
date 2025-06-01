@@ -38,6 +38,32 @@ export const metadata: Metadata = {
   },
 }
 
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "Kopiator Service AB Produkter",
+  "description": "Stor butik för kopiatorer, skrivare och kontorsmaskiner",
+  "url": "https://kopiatorservice.se/produkter",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Kopiatorer och Skrivare",
+    "itemListElement": [
+      {
+        "@type": "Product",
+        "category": "Kopiatorer",
+        "name": "Nya Kopiatorer",
+        "description": "Moderna kopiatorer med senaste tekniken"
+      },
+      {
+        "@type": "Product", 
+        "category": "Kopiatorer",
+        "name": "Begagnade Kopiatorer", 
+        "description": "Kvalitetstestade begagnade kopiatorer med garanti"
+      }
+    ]
+  }
+}
+
 // Denna funktion körs på servern vid varje sidladdning
 async function getProducts() {
   const { data: products, error } = await supabase
@@ -58,6 +84,12 @@ export default async function ProdukterPage() {
 
   return (
     <main className="flex min-h-screen flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productSchema),
+        }}
+      />
       {/* Hero Section */}
       <section className="relative h-[30vh] sm:h-[35vh] md:h-[40vh] min-h-[250px] sm:min-h-[300px] flex items-center">
         <div className="absolute inset-0 z-0">

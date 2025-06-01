@@ -5,7 +5,7 @@ import { ChevronRight, Users, Award, Clock, Briefcase } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Om Oss - Kopiator Service AB | 30+ År av Expertis inom Kopiatorer",
+  title: "Om Oss - 30+ År av Kopiatorer i Göteborg | Kopiator Service AB",
   description:
     "Lär känna Kopiator Service AB - din pålitliga partner för kopiatorer och skrivare sedan 1993. Med över 30 års erfarenhet, 1000+ nöjda kunder och expertis inom multifunktionsmaskiner i Göteborg och Västra Götaland.",
   keywords: [

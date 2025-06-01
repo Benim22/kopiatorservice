@@ -9,9 +9,9 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Kopiator Service AB - Försäljning & Service av Kopiatorer och Skrivare",
+  title: "Kopiator Service AB - Kopiatorer & Skrivare Göteborg",
   description:
-    "Ledande leverantör av kopiatorer, skrivare och multifunktionsmaskiner i Göteborg. Vi erbjuder försäljning, uthyrning, service och finansiering av både nya och begagnade kopiatorer. 30+ års erfarenhet.",
+    "Ledande leverantör av kopiatorer och skrivare i Göteborg. Försäljning, uthyrning, service och finansiering. 30+ års erfarenhet.",
   keywords: [
     "kopiatorer",
     "skrivare", 
@@ -43,22 +43,28 @@ export const metadata: Metadata = {
     siteName: "Kopiator Service AB",
     title: "Kopiator Service AB - Kopiatorer & Skrivare i Göteborg",
     description:
-      "Professionella lösningar för kopiatorer och skrivare. Service, försäljning och uthyrning med 30+ års erfarenhet i Göteborg och Västra Götaland.",
+      "Professionella lösningar för kopiatorer och skrivare. Service, försäljning och uthyrning med 30+ års erfarenhet i Göteborg.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "https://kopiatorservice.se/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Kopiator Service AB - Kopiatorer och skrivare",
+        type: "image/jpeg",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
+    site: "@kopiatorservice",
+    creator: "@kopiatorservice",
     title: "Kopiator Service AB - Kopiatorer & Skrivare",
     description:
       "Professionella lösningar för kopiatorer och skrivare i Göteborg. Service, försäljning och uthyrning.",
-    images: ["/twitter-image.jpg"],
+    images: {
+      url: "https://kopiatorservice.se/twitter-image.jpg",
+      alt: "Kopiator Service AB",
+    },
   },
   robots: {
     index: true,
@@ -133,6 +139,11 @@ export default function RootLayout({
   return (
     <html lang="sv" suppressHydrationWarning>
       <head>
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow" />
+        <meta name="bingbot" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://kopiatorservice.se" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

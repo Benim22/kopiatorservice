@@ -12,9 +12,9 @@ import type { Product } from "@/types/supabase"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Hem - Kopiator Service AB | Kopiatorer & Skrivare Göteborg",
+  title: "Kopiatorer & Skrivare Göteborg | Kopiator Service AB",
   description:
-    "Välkommen till Kopiator Service AB - din pålitliga partner för kopiatorer och skrivare i Göteborg sedan 1993. Vi erbjuder försäljning, uthyrning, service och finansiering av både nya och begagnade kontorsmaskiner.",
+    "Pålitlig partner för kopiatorer och skrivare i Göteborg sedan 1993. Försäljning, uthyrning och service av nya och begagnade kontorsmaskiner.",
   keywords: [
     "kopiator service göteborg",
     "kopiatorer partille",
@@ -37,7 +37,10 @@ export const metadata: Metadata = {
     type: "website",
   },
   alternates: {
-    canonical: "https://kopiatorservice.se",
+    canonical: "https://kopiatorservice.se/",
+  },
+  other: {
+    "robots": "index, follow",
   },
 }
 
@@ -146,7 +149,7 @@ export default async function Home() {
           <div className="text-center">
             <Button asChild className="bg-[#003366] hover:bg-[#002244] text-sm sm:text-base px-8 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300">
               <Link href="/tjanster">
-                Läs mer om våra tjänster <ChevronRight className="ml-2 h-4 w-4" />
+                Utforska våra tjänster för kopiatorer <ChevronRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
@@ -171,7 +174,7 @@ export default async function Home() {
               </p>
               <Button asChild className="bg-[#003366] hover:bg-[#002244] text-sm sm:text-base px-8 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300">
                 <Link href="/om-oss">
-                  Lär känna oss bättre <ChevronRight className="ml-2 h-4 w-4" />
+                  Läs om vår 30-åriga historia <ChevronRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </div>
