@@ -50,7 +50,7 @@ export default function IntegritetspolicyPage() {
                 </p>
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <p><strong>Postadress:</strong> Gamla Alingsåsvägen 24, 433 38 Partille</p>
-                  <p><strong>E-post:</strong> info@kopiatorservice.se</p>
+                  <p><strong>E-post:</strong> info@kopiator.eu</p>
                   <p><strong>Telefon:</strong> 031 – 19 55 00</p>
                 </div>
               </section>
@@ -176,7 +176,7 @@ export default function IntegritetspolicyPage() {
                   För frågor om denna integritetspolicy eller för att utöva dina rättigheter, kontakta oss:
                 </p>
                 <div className="bg-[#F5F5F5] p-6 rounded-lg">
-                  <p className="mb-2"><strong>E-post:</strong> dataskydd@kopiatorservice.se</p>
+                  <p className="mb-2"><strong>E-post:</strong> dataskydd@kopiator.eu</p>
                   <p className="mb-2"><strong>Telefon:</strong> 031 – 19 55 00</p>
                   <p className="mb-4"><strong>Post:</strong> Kopiator Service AB, Gamla Alingsåsvägen 24, 433 38 Partille</p>
                   <p className="text-sm text-gray-600">

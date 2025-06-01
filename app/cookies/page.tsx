@@ -271,7 +271,7 @@ export default function CookiesPage() {
                   Om du har frågor om vår användning av cookies eller vill utöva dina rättigheter, tveka inte att kontakta oss:
                 </p>
                 <div className="bg-[#F5F5F5] p-6 rounded-lg">
-                  <p className="mb-2"><strong>E-post:</strong> cookies@kopiatorservice.se</p>
+                  <p className="mb-2"><strong>E-post:</strong> cookies@kopiator.eu</p>
                   <p className="mb-2"><strong>Telefon:</strong> 031 – 19 55 00</p>
                   <p className="mb-4"><strong>Postadress:</strong> Kopiator Service AB, Gamla Alingsåsvägen 24, 433 38 Partille</p>
                   <p className="text-sm text-gray-600">

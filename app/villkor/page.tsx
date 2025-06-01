@@ -54,7 +54,7 @@ export default function VillkorPage() {
                   <p><strong>Företaget:</strong> Kopiator Service AB</p>
                   <p><strong>Adress:</strong> Gamla Alingsåsvägen 24, 433 38 Partille</p>
                   <p><strong>Organisationsnummer:</strong> 556XXX-XXXX</p>
-                  <p><strong>E-post:</strong> info@kopiatorservice.se</p>
+                  <p><strong>E-post:</strong> info@kopiator.eu</p>
                   <p><strong>Telefon:</strong> 031 – 19 55 00</p>
                 </div>
               </section>
@@ -221,7 +221,7 @@ export default function VillkorPage() {
                   För frågor om dessa villkor eller andra affärsförhållanden, kontakta oss:
                 </p>
                 <div className="bg-[#F5F5F5] p-6 rounded-lg">
-                  <p className="mb-2"><strong>E-post:</strong> info@kopiatorservice.se</p>
+                  <p className="mb-2"><strong>E-post:</strong> info@kopiator.eu</p>
                   <p className="mb-2"><strong>Telefon:</strong> 031 – 19 55 00</p>
                   <p className="mb-2"><strong>Adress:</strong> Kopiator Service AB, Gamla Alingsåsvägen 24, 433 38 Partille</p>
                   <p className="text-sm text-gray-600 mt-4">

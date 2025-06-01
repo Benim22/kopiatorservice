@@ -15,7 +15,7 @@ export function ContactCard() {
         <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-[#003366] mt-1 mr-2 sm:mr-3 shrink-0" />
         <div>
           <p className="font-medium text-sm sm:text-base">E-post</p>
-          <p className="text-gray-600 text-sm sm:text-base break-all">info@kopiatorservice.se</p>
+          <p className="text-gray-600 text-sm sm:text-base break-all">info@kopiator.eu</p>
         </div>
       </div>
 

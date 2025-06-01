@@ -107,7 +107,7 @@ export function Footer() {
               </li>
               <li className="flex items-start">
                 <Mail className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-3 mt-0.5 shrink-0" />
-                <span className="text-sm sm:text-base break-all">info@kopiatorservice.se</span>
+                <span className="text-sm sm:text-base break-all">info@kopiator.eu</span>
               </li>
               <li className="text-sm sm:text-base">
                 <p>Gamla Alingsåsvägen 24</p>

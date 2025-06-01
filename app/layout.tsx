@@ -56,8 +56,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@kopiatorservice",
-    creator: "@kopiatorservice",
+    site: "@kopiator",
+    creator: "@kopiator",
     title: "Kopiator Service AB - Kopiatorer & Skrivare",
     description:
       "Professionella lösningar för kopiatorer och skrivare i Göteborg. Service, försäljning och uthyrning.",
@@ -96,7 +96,7 @@ const structuredData = {
   "description": "Ledande leverantör av kopiatorer, skrivare och multifunktionsmaskiner i Göteborg. Vi erbjuder försäljning, uthyrning, service och finansiering av både nya och begagnade kopiatorer.",
   "url": "https://kopiatorservice.se",
   "telephone": "+46-31-19-55-00",
-  "email": "info@kopiatorservice.se",
+  "email": "info@kopiator.eu",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Gamla Alingsåsvägen 24",

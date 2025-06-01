@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "kontakt kopiator service",
     "telefon 031-19 55 00",
     "gamla alingsåsvägen 24 partille",
-    "info@kopiatorservice.se",
+    "info@kopiator.eu",
     "kopiator service adress",
     "öppettider kopiator service",
     "kontakt kopiatorer göteborg",
@@ -176,7 +176,7 @@ export default function ContactPage() {
                     <Mail className="h-5 w-5 text-[#003366] mt-1 mr-3" />
                     <div>
                       <p className="font-medium">E-post</p>
-                      <p className="text-gray-600">info@kopiatorservice.se</p>
+                      <p className="text-gray-600">info@kopiator.eu</p>
                     </div>
                   </div>
                 </div>

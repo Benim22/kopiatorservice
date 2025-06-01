@@ -73,7 +73,7 @@ export default function AboutPage() {
               </p>
               <p className="text-gray-600 mb-6">
                 Vi hjälper dig gärna med rådgivning kring funktioner, finansiering, service och reparation. Kontakta 
-                oss på info@kopiatorservice.se – vi ser till att du får rätt lösning för dina behov.
+                oss på info@kopiator.eu – vi ser till att du får rätt lösning för dina behov.
               </p>
               <div className="bg-[#F5F5F5] p-6 rounded-lg mb-6">
                 <h3 className="text-xl font-bold text-[#003366] mb-4">Varför välja oss?</h3>

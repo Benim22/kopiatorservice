@@ -13,7 +13,7 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section className="relative min-h-[60vh] sm:min-h-[70vh] md:min-h-[75vh] lg:min-h-[80vh] xl:min-h-[85vh] 2xl:h-[90vh] flex items-center overflow-hidden">
+    <section className="relative min-h-[60vh] sm:min-h-[70vh] md:min-h-[75vh] lg:min-h-[80vh] xl:min-h-[85vh] 2xl:h-[90vh] flex items-center overflow-hidden bg-[#003366]">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video 
@@ -59,14 +59,14 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col xs:flex-row gap-3 sm:gap-4 justify-center sm:justify-start items-center"
           >
-            <Button asChild size="lg" className="bg-white text-[#003366] hover:bg-gray-100 shadow-md hover:shadow-lg transition-all duration-300 text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-3 font-semibold rounded-lg w-full xs:w-auto">
-              <Link href="#contact">Kontakta oss</Link>
+            <Button asChild size="lg" className="bg-white text-[#003366] hover:bg-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-3 font-semibold rounded-lg w-full xs:w-auto touch-target">
+              <Link href="#contact">Kontakta oss idag</Link>
             </Button>
             <Button
               asChild
               size="lg"
               variant="outline"
-              className="bg-transparent text-white border-white border-2 hover:bg-white hover:text-[#003366] shadow-md hover:shadow-lg transition-all duration-300 text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-3 font-semibold rounded-lg w-full xs:w-auto"
+              className="bg-transparent text-white border-white border-2 hover:bg-white hover:text-[#003366] shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-3 font-semibold rounded-lg w-full xs:w-auto touch-target"
             >
               <Link href="#products">Utforska produkter</Link>
             </Button>
@@ -74,22 +74,27 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Wave animation without black line - Fixed positioning */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 -mb-px">
+      {/* Smooth Wave Transition - No black lines */}
+      <div className="absolute bottom-0 left-0 right-0 z-20">
         <svg 
           xmlns="http://www.w3.org/2000/svg" 
           viewBox="0 0 1440 120" 
-          className="w-full h-8 sm:h-12 md:h-16 lg:h-20 xl:h-auto block"
+          className="w-full h-8 sm:h-12 md:h-16 lg:h-20 xl:h-24"
           preserveAspectRatio="none"
-          style={{ display: 'block', lineHeight: 0 }}
+          style={{ display: 'block' }}
         >
+          <defs>
+            <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style={{ stopColor: '#ffffff', stopOpacity: 1 }} />
+              <stop offset="100%" style={{ stopColor: '#ffffff', stopOpacity: 1 }} />
+            </linearGradient>
+          </defs>
           <path
-            fill="#ffffff"
-            fillOpacity="1"
+            fill="url(#wave-gradient)"
             stroke="none"
-            vectorEffect="non-scaling-stroke"
+            strokeWidth="0"
             d="M0,96L48,90.7C96,85,192,75,288,80C384,85,480,107,576,112C672,117,768,107,864,90.7C960,75,1056,53,1152,48C1248,43,1344,53,1392,58.7L1440,64L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"
-          ></path>
+          />
         </svg>
       </div>
     </section>
